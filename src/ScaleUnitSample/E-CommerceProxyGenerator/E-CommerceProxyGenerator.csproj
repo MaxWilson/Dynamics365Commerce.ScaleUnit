@@ -3,7 +3,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <CommerceProxyGeneratorApplicationType>TypeScriptModuleExtensions</CommerceProxyGeneratorApplicationType>
+        <CommerceProxyGeneratorApplicationType>CSharpExtensions</CommerceProxyGeneratorApplicationType>
     </PropertyGroup>
 
     <ItemGroup>

@@ -39,5 +39,12 @@ namespace Contoso.CommerceRuntime.Controllers
         {
             return Task.FromResult(true);
         }
+
+        [HttpPost]
+        [Authorization(CommerceRoles.Customer, CommerceRoles.Device, CommerceRoles.Employee)]
+        public async Task<SalesTransaction> CalculateTaxes(IEndpointContext context, [EntityKey] long key)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

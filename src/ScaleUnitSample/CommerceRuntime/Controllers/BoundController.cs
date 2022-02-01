@@ -9,6 +9,7 @@
  
 namespace Contoso.CommerceRuntime.Controllers
 {
+    using System;
     using System.Threading.Tasks;
     using Microsoft.Dynamics.Commerce.Runtime;
     using Microsoft.Dynamics.Commerce.Runtime.DataModel;
@@ -35,11 +36,11 @@ namespace Contoso.CommerceRuntime.Controllers
 
         [HttpPost]
         [Authorization(CommerceRoles.Customer, CommerceRoles.Device, CommerceRoles.Employee)]
-        public async Task<long> CreateExampleEntity(IEndpointContext context, CommerceRuntime.Entities.DataModel.ExampleEntity entityData)
+        public async Task<long[]> CreateExampleEntity(IEndpointContext context, CommerceRuntime.Entities.DataModel.ExampleEntity entityData)
         {
             var request = new Messages.CreateExampleEntityDataRequest(entityData);
             var response = await context.ExecuteAsync<Messages.CreateExampleEntityDataResponse>(request).ConfigureAwait(false);
-            return response.CreatedId;
+            return new[] { response.CreatedId };
         }
 
         [HttpPost]
@@ -59,5 +60,8 @@ namespace Contoso.CommerceRuntime.Controllers
             var response = await context.ExecuteAsync<Messages.DeleteExampleEntityDataResponse>(request).ConfigureAwait(false);
             return response.Success;
         }
+
+
+
     }
 }
